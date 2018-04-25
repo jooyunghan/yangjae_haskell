@@ -1,6 +1,7 @@
 module Main where
 
 import Data.List (intercalate, nub)
+import Lib (someFunc)
 
 newtype Dialog       = Dialog { domainResult :: [DomainResult] }
 newtype DomainResult = DomainResult { mainAction :: MainAction }
@@ -15,5 +16,6 @@ generateKeyList (Dialog dr) =
   in [key ++ ":DC", key]
 
 main :: IO ()
-main =
-  print $ generateKeyList $ Dialog $ map DomainResult [Action1, Action1, Action2, Action3, Action1]
+main = do
+  print $ generateKeyList $ Dialog $ map DomainResult [Action2, Action1, Action2, Action3, Action1, Action1]
+  someFunc
